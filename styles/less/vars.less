@@ -4,10 +4,28 @@
 @color-comment:     #60854A;
 @color-string:      #87513B;
 @color-variable:    #538DBD;
+@color-operator:    #cccccc;
+@color-user:        #00ff00;
+
+.color-background { color: @color-background}
+.color-keyword    { color: @color-keyword;}
+.color-comment    { color: @color-comment;}
+.color-string     { color: @color-variable;}
+.color-variable   { color: @color-variable;}
+.color-user       { color: @color-user;}
+.color-operator   { color: @color-operator;}
+.color-header     { color: @color-operator;}
 
 //COLOR THEMES
 //future idea, store colors in array
 //$change theme [theme #] //to change themes dynamically
 
 //FONTS
-@font:  "Roboto Mono", monospace;
+@font:      @roboto;
+@roboto:    "Roboto Mono", monospace;
+@commodore: 'commodore';
+
+@font-face {
+    font-family: 'commodore';
+    src: url('../fonts/Commodore.ttf'); 
+}

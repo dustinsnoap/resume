@@ -1,3 +1,42 @@
+.color-background {
+  color: #232323;
+}
+.color-keyword {
+  color: #395D94;
+}
+.color-comment {
+  color: #60854A;
+}
+.color-string {
+  color: #538DBD;
+}
+.color-variable {
+  color: #538DBD;
+}
+.color-user {
+  color: #00ff00;
+}
+.color-operator {
+  color: #cccccc;
+}
+.color-header {
+  color: #cccccc;
+}
+@font-face {
+  font-family: 'commodore';
+  src: url('../fonts/Commodore.ttf');
+}
+@keyframes cursor {
+  0% {
+    background-color: rgba(250, 250, 250, 0);
+  }
+  50% {
+    background-color: rgba(250, 250, 250, 0.5);
+  }
+  100% {
+    background-color: rgba(250, 250, 250, 0);
+  }
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -142,4 +181,31 @@ html > * {
 }
 body {
   background-color: #333;
+  font-size: 2rem;
+  font-family: "Roboto Mono", monospace;
+}
+.line {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  height: 2rem;
+  width: fit-content;
+  color: inherit;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: normal;
+  line-height: 2rem;
+  text-align: inherit;
+}
+.line:focus {
+  outline: none;
+}
+.line .prompt-input::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 1rem;
+  animation: cursor 1.42s ease-in-out infinite;
 }

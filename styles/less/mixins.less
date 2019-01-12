@@ -21,7 +21,7 @@
     height: @height;
     width: @width;
 }
-.text(@color: inherit; @family: inherit; @size: inherit; @align: inherit; @weight: normal; @line-height: normal; @decoration: none) {
+.text(@color: inherit; @family: inherit; @size: inherit; @align: inherit; @weight: normal; @line-height: normal; @decoration: none; @outline: none) {
     color: @color;
     text-decoration: @decoration;
     font-family: @family;
@@ -29,4 +29,14 @@
     font-weight: @weight;
     line-height: @line-height;
     text-align: @align;
+    &:focus {
+        outline: @outline;
+    }
+}
+
+//objects
+@keyframes cursor {
+    0% {background-color: rgba(250,250,250,0);}
+    50% {background-color: rgba(250,250,250,.5);}
+    100% {background-color: rgba(250,250,250,0);}
 }

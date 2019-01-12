@@ -1,3 +1,21 @@
 body {
     background-color: #333;
+    font-size: 2rem;
+    font-family: @font;
+}
+
+.line {
+    .flex();
+    .size(2rem, fit-content);
+    .text(@line-height: 2rem);
+
+    .prompt-input {
+        &::after {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            width: 1rem;
+            animation: cursor 1.42s ease-in-out infinite;
+        }
+    }
 }

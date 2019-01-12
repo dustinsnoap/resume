@@ -2,10 +2,24 @@
     <head>
         <title>Resume</title>
         <link rel="stylesheet" href="./styles/css/index.css">
-        <script type="text/javascript" src="./scripts/terminal.js"></script>
-        <script type="text/javascript" src="./scripts/getip.js"></script>
+        <script type="text/javascript" src="./scripts/prompt.js"></script>
+        <!-- <script type="text/javascript" src="./scripts/terminal.js"></script>
+        <script type="text/javascript" src="./scripts/getip.js"></script> -->
     </head>
     <body>
-        <h1>Hello, Resume!</h1>
+        <div class="container">
+            <header>
+                <span class="color-header">Last login: Sat Jan 12 00:46:30 2019 from 192.168.1.13</span>
+            </header>
+            <section id="prompt">
+                <div class="line">
+                    <span class="color-user">You@192.168.1.13</span>
+                    <span class="color-operator">:</span>
+                    <span class="color-variable">~</span>
+                    <span class="color-operator">$</span>
+                    <span class="prompt-input" id="prompt-input"></span>
+                </div>
+            </section><!--/prompt-->
+        </div><!--/container-->
     </body>
 </html>
