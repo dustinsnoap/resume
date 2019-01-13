@@ -196,16 +196,22 @@ body {
   font-family: inherit;
   font-size: inherit;
   font-weight: normal;
-  line-height: 2rem;
+  line-height: 3rem;
   text-align: inherit;
 }
 .line:focus {
   outline: none;
 }
+.line .prompt-input {
+  line-height: 3rem;
+  margin-left: 1.1rem;
+}
 .line .prompt-input::after {
   content: "";
   display: inline-block;
-  height: 100%;
-  width: 1rem;
+  position: absolute;
+  height: 2.2rem;
+  width: 1.1rem;
+  margin-top: 0.5rem;
   animation: cursor 1.42s ease-in-out infinite;
 }
