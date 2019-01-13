@@ -184,12 +184,15 @@ body {
   font-size: 2rem;
   font-family: "Roboto Mono", monospace;
 }
+.container {
+  margin-left: 1.1rem;
+}
 .line {
   display: flex;
   flex-direction: row;
   justify-content: start;
   align-items: start;
-  height: 2rem;
+  height: 3rem;
   width: fit-content;
   color: inherit;
   text-decoration: none;
@@ -202,16 +205,14 @@ body {
 .line:focus {
   outline: none;
 }
-.line .prompt-input {
-  line-height: 3rem;
-  margin-left: 1.1rem;
-}
-.line .prompt-input::after {
-  content: "";
-  display: inline-block;
-  position: absolute;
+.line .cursor {
   height: 2.2rem;
   width: 1.1rem;
   margin-top: 0.5rem;
   animation: cursor 1.42s ease-in-out infinite;
+}
+.line .prompt-input {
+  line-height: 3rem;
+  margin-left: 1.1rem;
+  height: 3rem;
 }

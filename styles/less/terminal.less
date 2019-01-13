@@ -3,23 +3,23 @@ body {
     font-size: 2rem;
     font-family: @font;
 }
-
+.container {
+    margin-left: 1.1rem;
+}
 .line {
     .flex();
-    .size(2rem, fit-content);
+    .size(3rem, fit-content);
     .text(@line-height: 3rem);
-
+      
+    .cursor {
+        height: 2.2rem;
+        width: 1.1rem;
+        margin-top: .5rem;
+        animation: cursor 1.42s ease-in-out infinite;
+    }
     .prompt-input {
         line-height: 3rem;
         margin-left: 1.1rem;
-        &::after {
-            content: "";
-            display: inline-block;
-            position: absolute;
-            height: 2.2rem;
-            width: 1.1rem;
-            margin-top: .5rem;
-            animation: cursor 1.42s ease-in-out infinite;
-        }
+        height: 3rem;
     }
 }
