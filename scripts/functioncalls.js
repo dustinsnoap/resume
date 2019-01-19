@@ -56,5 +56,43 @@ function fnLS() {
 //minesweeper
 function fnMinesweeper() {
     let terminal = document.getElementById("terminal");
+    let grid = createGrid(5, 5, 10);
+    drawGrid()
     console.log("minesweeper!");
+}
+
+function createGrid(height, width, ratio) {
+    //ratio is x mines per 100 squares
+    //todo: randomly create grid
+    let grid = [
+                [0,0,0,0,0],
+                [0,9,0,0,0],
+                [0,0,0,0,0],
+                [0,0,9,9,0],
+                [0,0,0,0,0],
+            ];
+    console.log(grid);
+    
+    //get mine map 
+    grid.forEach(function(row, r) {//loop through each row
+        row.forEach(function(col, c) {//loop through each column
+            let mineCount = 0;
+            if(grid[r][c] == 9) return;
+            for(let checkRow = r-1; checkRow <= r+1; checkRow++) {
+                if(checkRow === -1 || checkRow === grid.length) continue;
+                if(c-1 > -1) if(grid[checkRow][c-1] === 9) mineCount++;
+                if(grid[checkRow][c] === 9) mineCount++;
+                if(c+1 < row.length) if(grid[checkRow][c+1] === 9) mineCount++;
+            }
+            grid[r][c] = mineCount;
+        });
+    });
+    console.log(grid);
+}
+createGrid(5,5,10);
+
+function drawGrid(arr) {
+    let terminal = document.getElementById("terminal");
+    let line = document.createElement("div");
+    line.classList.add("line");
 }
