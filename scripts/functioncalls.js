@@ -5,6 +5,7 @@ function callStack(keyword) {
     let callStack = []; //[keyword, function call]
     callStack.push(["clear", fnClear]);
     callStack.push(["ls", fnLS]);
+    callStack.push(["minesweeper", fnMinesweeper]);
     
     let result = callStack.filter(function(call) {
         //there's an app for that
@@ -51,4 +52,9 @@ function fnLS() {
         }
     });
     terminal.appendChild(line);
+}
+//minesweeper
+function fnMinesweeper() {
+    let terminal = document.getElementById("terminal");
+    console.log("minesweeper!");
 }
