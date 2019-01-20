@@ -57,8 +57,8 @@ function fnLS() {
 function fnMinesweeper() {
     let terminal = document.getElementById("terminal");
     let grid = createGrid(5, 5, 10);
-    drawGrid()
     console.log("minesweeper!");
+    drawGrid(10,10);
 }
 
 function createGrid(height, width, ratio) {
@@ -72,27 +72,33 @@ function createGrid(height, width, ratio) {
                 [0,0,0,0,0],
             ];
     console.log(grid);
-    
-    //get mine map 
-    grid.forEach(function(row, r) {//loop through each row
-        row.forEach(function(col, c) {//loop through each column
-            let mineCount = 0;
-            if(grid[r][c] == 9) return;
-            for(let checkRow = r-1; checkRow <= r+1; checkRow++) {
-                if(checkRow === -1 || checkRow === grid.length) continue;
-                if(c-1 > -1) if(grid[checkRow][c-1] === 9) mineCount++;
-                if(grid[checkRow][c] === 9) mineCount++;
-                if(c+1 < row.length) if(grid[checkRow][c+1] === 9) mineCount++;
-            }
-            grid[r][c] = mineCount;
-        });
-    });
-    console.log(grid);
 }
-createGrid(5,5,10);
 
-function drawGrid(arr) {
+function drawGrid(height, width) {
     let terminal = document.getElementById("terminal");
-    let line = document.createElement("div");
-    line.classList.add("line");
+    for(let r=0; r<height; r++) {
+        //create dom elements
+        let line = document.createElement("div");
+        let row = document.createElement("pre");
+        row.classList.add("color-prompt");
+        line.classList.add("line");
+        line.appendChild(row);
+        terminal.appendChild(line);
+
+        //fill elements with text
+        //title row
+        if(r === 0) {
+            for(let c=0; c<=width; c++) {
+                if(c===0) row.textContent = ` / `;
+                else row.textContent += ` ${(c+9).toString(36).toUpperCase()} `;
+            }
+        }
+        else {
+            row.textContent = ` ${(r+9).toString(36).toUpperCase()} `;
+            for(let c=0; c<width; c++) row.textContent += ` - `;
+        }
+        //columns
+    }
 }
+let test = 10;
+console.log(test.toString(36));
