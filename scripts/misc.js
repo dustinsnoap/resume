@@ -1,11 +1,72 @@
-function updateLastLogin() {
-    let ip = getIP(function(ip) {
-        let el = document.getElementById("timestamp");
-        let date = getTimestamp();
-        el.textContent = "Last login: " + date + " from " + ip;
-    });
+class Prompt {
+    constructor() {
+        this.terminal = document.getElementById("terminal");
+    }
+    get_input() {
+        return document.getElementById("prompt-input");
+    }
+    print() {
+        let newline = newElement("div", "line");
+        let decendants = [];
+        decendants.push(newElement("span", "color-user", null, "You@86.7.53.09"));
+        decendants.push(newElement("span", "color-operator", null, ":"));
+        decendants.push(newElement("span", "color-variable", null, "~"));
+        decendants.push(newElement("span", "color-operator", null, "$"));
+        decendants.push(newElement("pre", ["color-prompt", "prompt-input"], "prompt-input"));
+        decendants.push(newElement("span", "cursor"));
+        decendants.forEach(function(el) {newline.appendChild(el)});
+        this.terminal.appendChild(newline);
+        this.input = document.getElementById("prompt-input");
+    }
+    startListeners() {
+        document.addEventListener("keydown", this.getInput);
+    }
+    getInput(e) {
+        this.input = document.getElementById("prompt-input");
+        //backspace (remove last char from string)
+        if(e.keyCode == 8) this.input.textContent = this.input.textContent.slice(0, -1);
+        //enter
+        if(e.keyCode == 13) systemCall();
+        //space
+        if(e.keyCode == 32) this.input.textContent = this.input.textContent += e.key;
+        //a-zA-Z
+        if(e.keyCode >= 48 && e.keyCode <= 90) this.input.textContent += e.key;
+        //0-9
+        if(e.keyCode >= 96 && e.keyCode <= 111) this.input.textContent += e.key;
+        //punctuation
+        if(e.keyCode >= 186 && e.keyCode <= 222) this.input.textContent += e.key;
+    }
 }
 
+function newElement(el_tag, el_class, el_id, el_text) {
+    let el = document.createElement(el_tag);
+    el.textContent = el_text;
+    if(el_class) { //if class check if array or string
+        if(Array.isArray(el_class)) el_class.forEach(className => {el.classList.add(className)});
+        else el.classList.add(el_class);
+    }
+    if(el_id) el.setAttribute("id", el_id);
+    if(el_text) el.textContent = el_text;
+    return el;
+}
+
+function printLastLogin() {
+    let terminal = document.getElementById("terminal");
+    let line = document.createElement("div");
+    //create line elements
+    let timestamp = document.createElement("pre");
+    //append everything to terminal
+    line.appendChild(timestamp);
+    terminal.appendChild(line);
+    //set classes
+    line.classList.add("line");
+    timestamp.classList.add("color-prompt");
+
+    let ip = getIP(function(ip) {
+        let date = getTimestamp();
+        timestamp.textContent = "Last login: " + date + " from " + ip;
+    });
+}
 function getTimestamp() {
     const days = ['Sun','Mon','Tue','Wed','Thur','Fri','Sat'];
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -19,7 +80,6 @@ function getTimestamp() {
     hour = hour < 10 ? '0' + hour : hour;
     minute = minute < 10 ? '0' + minute : minute;
     second = second < 10 ? '0' + second : second;
-    // let strTime = hours + ':' + minutes + ' ' + ampm;
     return day + " " + month + " " + date.getDate() + " " + hour + ":" + minute + ":" + second + " " + year;
 }
 
