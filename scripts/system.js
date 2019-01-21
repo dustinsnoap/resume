@@ -5,8 +5,6 @@ window.onload = function() {
     prompt.startListeners();
 }
 
-// let system = new System();
-
 class Functions {
     constructor() {
     }
@@ -75,17 +73,11 @@ class Prompt {
     getInput(e) {
         this.input = document.getElementById("prompt-input");
         this.system = new System();
-        //backspace (remove last char from string)
-        if(e.keyCode == 8) this.input.textContent = this.input.textContent.slice(0, -1);
-        //enter
-        if(e.keyCode == 13) this.system.call(this.input.textContent);
-        //space
-        if(e.keyCode == 32) this.input.textContent = this.input.textContent += e.key;
-        //a-zA-Z
-        if(e.keyCode >= 48 && e.keyCode <= 90) this.input.textContent += e.key;
-        //0-9
-        if(e.keyCode >= 96 && e.keyCode <= 111) this.input.textContent += e.key;
-        //punctuation
-        if(e.keyCode >= 186 && e.keyCode <= 222) this.input.textContent += e.key;
+        if(e.keyCode == 8) this.input.textContent = this.input.textContent.slice(0, -1);//backspace
+        if(e.keyCode == 13) this.system.call(this.input.textContent);//enter
+        if(e.keyCode == 32) this.input.textContent = this.input.textContent += e.key;//space
+        if(e.keyCode >= 48 && e.keyCode <= 90) this.input.textContent += e.key;//a-zA-Z
+        if(e.keyCode >= 96 && e.keyCode <= 111) this.input.textContent += e.key;//0-9
+        if(e.keyCode >= 186 && e.keyCode <= 222) this.input.textContent += e.key;//punctuation
     }
 }
